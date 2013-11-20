@@ -808,7 +808,12 @@ function replaceXRange(comp, loose) {
         if (xM) {
           // no change
         } else if (xm) {
-          M = +M + 1;
+          if (loose) {
+            // >1.2.3 => >=1.x.x
+          } else {
+            // >1.2.3 => >=2.x.x
+            M = +M + 1;
+          }
           m = 0;
           p = 0;
         } else if (xp) {
